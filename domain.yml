@@ -1,0 +1,323 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- human_challenge
+- request_room_details
+- inform_names
+- inform_phone
+- inform_email_address
+- request_ask_reservation
+- inform_dates
+- inform_checkin_date
+- inform_checkout_date
+- inform_guests_number
+- informt_room_number
+- inform_room_types
+- request_breakfast
+- request_park_place
+- request_bill
+- request_fitness_services
+- request_client_message
+- enter_client_message
+- request_cancel_reservation
+- request_checkin_time
+- inform_cancel_reservation
+- request_ask_restaurant_table
+- inform_restaurant_table_time
+
+forms:
+  name_form:
+    required_slots:
+        first_name:
+        - type: from_text
+        last_name:
+        - type: from_text
+        email_address:
+        - type: from_entity
+          entity: email_address
+          intent: inform_email_address
+        - type: from_text
+        phone:
+        - type: from_entity
+          entity: phone
+          intent: inform_phone
+        - type: from_text          
+
+  room_form:
+    required_slots:
+        checkin_date:
+        - type: from_entity
+          entity: date
+          role: start
+          intent: inform_dates
+        - type: from_entity   
+          entity: checkin_date
+          intent: inform_checkin_date
+        checkout_date:
+        - type: from_entity
+          entity: date
+          role: end
+          intent: inform_dates
+        - type: from_entity  
+          entity: checkout_date
+          intent: inform_checkout_date                          
+        number_guests:
+        - type: from_entity  
+          entity: number_guests
+          intent: inform_guests_number
+        number_rooms:
+        - type: from_entity  
+          entity: number_rooms
+          intent: inform_room_number
+        room_type:
+        - type: from_entity  
+          entity: room_type
+          intent: inform_room_types
+  
+  client_message_form:
+    required_slots:
+        client_message:
+        - type: from_text
+  
+  client_cancel_reservation_number_form:
+    required_slots:
+        cancel_reservation_number:
+        - type: from_text          
+ 
+  table_form:
+    required_slots:
+        restaurant_table_time:
+        - type: from_text
+         
+slots:
+  first_name:
+    type: text
+    influence_conversation: false
+  last_name:
+    type: text
+    influence_conversation: false
+  email_address:
+    type: text
+    influence_conversation: false
+  phone:
+    type: text
+    influence_conversation: false
+  checkin_date:
+    type: text
+    influence_conversation: false
+  checkout_date:
+    type: text
+    influence_conversation: false
+  number_guests:
+    type: float
+    min_value: 1    
+    max_value: 10
+    influence_conversation: false
+  number_rooms:
+    type: float
+    min_value: 1    
+    max_value: 3
+    influence_conversation: false
+  room_type:
+    type: text
+    influence_conversation: false
+  reservation_number:
+    type: float
+    min_value: 1    
+    max_value: 99999
+    influence_conversation: false    
+  client_message:
+    type: text
+    influence_conversation: false
+  cancel_reservation_number:
+    type: float
+    min_value: 1    
+    max_value: 9999999
+    influence_conversation: false 
+  restaurant_table_time:
+    type: text
+    influence_conversation: false  
+  no_room_one:
+    type: float
+    min_value: 1    
+    max_value: 50 
+  no_room_two:
+    type: float
+    min_value: 1    
+    max_value: 50 
+  no_room_double:
+    type: float
+    min_value: 1    
+    max_value: 50 
+   
+entities:
+- location
+- checkinouttime
+- meal
+- date
+- garage
+- bill
+- fitness_services
+- first_name
+- last_name
+- phone
+- email_address
+- checkin_date
+- checkout_date
+- number_guests
+- number_rooms
+- room_type
+- client_message
+- reservation_number
+- cancel_reservation_number
+- room_no1
+- room_no2
+- restaurant_table_time
+- no_room_one
+- no_room_two
+- no_room_double
+
+responses:
+  utter_greet:
+  - text: Hello! What can I do for you?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, your personal assistant.
+  utter_talk_to_human:
+  - text: Sorry, that is not possible. You can call a hotel staff on the phone.
+  utter_ask_about_room_details:
+  - text: We offer one, two and double bed rooms and charge €60 a night for a person. All rooms are equipped with air-condition, bathroom, mini-bar, tv and wifi. You can check-in at 15:00 and check-out before 11:00.
+  utter_identify_client:
+  - text: Can I have your personal data? What is your name?
+  utter_ask_first_name:
+  - text: What is your first name?
+  utter_ask_last_name:
+  - text: What is your last name?
+  utter_ask_phone:
+  - text: May I have your phone number?
+  utter_ask_email_address:
+  - text: Please give me your email address?
+  utter_slots_name_values:
+  - text: Hello {first_name} {last_name}.
+  utter_slots_reservation_number:
+  - text: Your reservation number is {reservation_number}. We send an confirmation to {email_address}. You can check-in between 15:00 and 23:00.
+  utter_ask_reservation:
+  - text: Of course. What date can we welcome you? Please use dd.mm.yyyy
+
+  utter_ask_dates:
+  - text: Which dates can i reserve for you? Please use dd.mm.yyyy
+  utter_ask_dates_date:
+  - text: What period of time would you like to book? Please use dd.mm.yyyy
+  utter_ask_checkin_date:
+  - text: When do you check-in? Please use dd.mm.yyyy
+  utter_ask_checkout_date:
+  - text: When do you check-out? Please use dd.mm.yyyy
+  utter_ask_number_guests:
+  - text: How many guest can we welcome?
+  utter_ask_number_rooms:
+  - text: How many rooms do you need?
+  utter_ask_room_type:
+  - text: Which room type do you prefer? We offer {no_room_one} one, {no_room_two} two or {no_room_double} double bed rooms.
+  utter_slots_room_values:
+  - text: You selected a check-in at {checkin_date} and a check-out at {checkout_date}. You choosed {number_rooms} {room_type} bed room for {number_guests} guests.
+  utter_ask_book_room_now:
+  - text: May I book the rooms for you?
+  utter_cancel_reservation:
+   - text: Please enter your reservation number.
+  
+  utter_ask_checkinouttimes:
+   - text: Our check-in times are between 15:00 and 23:00 and we kindly ask to leave the room before 11:00.
+  
+  utter_ask_restaurant_table:
+  - text: Of course, you can book a restaurant table for your check-in day. The restaurant is opened between 11:00 and 23:00. What time do you need a restaurant table? 
+  
+  utter_breakfast_avail:
+  - text: The hotel provides its guests a free breakfast each morning from 7:00 to 9:00.
+  
+  utter_park_place_avail:
+  - text: The hotel provides its guest one free parking places for each room. Some chargers for electric cars are available. A public parking garage is near the hotel.
+  
+  utter_payments_avail:
+  - text: You can pay all services of the hotel and the restaurant with credit card (visa, master) or cash.
+  
+  utter_fitness_services_avail:
+  - text: The hotel provides its guests a outdoor pool in summer time. A public indoor pool with wellness area is near the hotel.
+  
+  utter_client_message:
+  - text: Yes, of course, what a message?
+  utter_slots_client_message_values:
+  - text: Your message is:"{client_message}". I forward it to the manager.
+  
+  utter_is_that_all:
+  - text: Can I do anything else for you?
+  utter_deny_message:
+  - text: How can I help you?
+  utter_ask_help:
+  - text: How can I help you?
+  utter_submit:
+  - text: Ok. Thanks!
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_iamabot
+- utter_talk_to_human
+- utter_ask_about_room_details
+- utter_identify_client
+- utter_ask_first_name
+- utter_ask_last_name
+- utter_ask_phone
+- utter_ask_email_address
+- utter_slots_name_values
+- utter_slots_reservation_number
+- utter_ask_reservation
+- utter_ask_dates
+- utter_ask_dates_date
+- utter_ask_checkin_date
+- utter_ask_checkout_date
+- utter_ask_number_guests
+- utter_ask_number_rooms
+- utter_ask_room_type
+- utter_slots_room_values
+- utter_ask_book_room_now
+- utter_cancel_reservation
+- utter_ask_checkinouttimes
+- utter_ask_restaurant_table
+- utter_breakfast_avail
+- utter_park_place_avail
+- utter_payments_avail
+- utter_fitness_services_avail
+- utter_client_message
+- utter_slots_client_message_values
+- utter_is_that_all
+- utter_deny_message
+- utter_ask_help
+- utter_submit
+
+- validate_name_form
+- validate_room_form
+- validate_table_form
+
+- action_check_room_avail
+- action_generate_reservation_number
+- action_cancel_reservation
+- action_store_client_room
+
+- action_get_breakfast
+- action_get_carparking
+- action_payments_avail
+- action_fitness_services_avail
+- action_book_restaurant_table
+- action_check_message_precondition
+- action_store_message
+- action_checkinout_times
+- action_check_all_avail_rooms

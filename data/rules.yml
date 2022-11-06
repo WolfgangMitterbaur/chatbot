@@ -1,0 +1,120 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user asks
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Activate form names
+  steps:
+  - intent: inform_names
+  - action: name_form
+  - active_loop: name_form
+
+- rule: Activate form cancel reservation form
+  steps:
+  - intent: inform_cancel_reservation
+  - action: client_cancel_reservation_number_form
+  - active_loop: client_cancel_reservation_number_form
+  
+- rule: Activate form room - case dates
+  steps:
+  - intent: inform_dates
+  - action: room_form
+  - active_loop: room_form 
+
+- rule: Activate form room - case check-in date
+  steps:
+  - intent: inform_checkin_date
+  - action: room_form
+  - active_loop: room_form 
+  
+- rule: Activate form message
+  steps:
+  - intent: enter_client_message
+  - action: client_message_form
+  - active_loop: client_message_form 
+
+- rule: Activate table names - case time
+  steps:
+  - intent: inform_restaurant_table_time
+  - action: table_form
+  - active_loop: table_form
+
+- rule: Submit form table
+  condition:
+  - active_loop: table_form
+  steps:
+  - action: table_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_book_restaurant_table
+
+- rule: Submit form client message
+  condition:
+  - active_loop: client_message_form
+  steps:
+  - action: client_message_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_slots_client_message_values
+  - action: action_store_message
+  - action: utter_is_that_all
+
+- rule: Interruption in name form
+  condition:
+  # condition that form is active
+  - active_loop: name_form
+  steps:
+  # an intent disturbs
+  - intent: human_challenge
+  - action: utter_talk_to_human  
+  # return to the form after handling the intent
+  - action: name_form
+  - active_loop: name_form
+
+- rule: Interruption in name form
+  condition:
+  # condition that form is active
+  - active_loop: name_form
+  steps:
+  # an intent disturbs
+  - intent: bot_challenge
+  - action: utter_iamabot  
+  # return to the form after handling the intent
+  - action: name_form
+  - active_loop: name_form
+ 
+- rule: Interruption in room form
+  condition:
+  # condition that form is active
+  - active_loop: room_form
+  steps:
+  # an intent disturbs
+  - intent: human_challenge
+  - action: utter_talk_to_human  
+  # return to the form after handling the intent
+  - action: room_form
+  - active_loop: room_form
+  
+- rule: Interruption in room form
+  condition:
+  # condition that form is active
+  - active_loop: room_form
+  steps:
+  # an intent disturbs
+  - intent: bot_challenge
+  - action: utter_iamabot  
+  # return to the form after handling the intent
+  - action: room_form
+  - active_loop: room_form
+  

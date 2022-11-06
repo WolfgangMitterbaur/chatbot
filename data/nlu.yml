@@ -1,0 +1,466 @@
+version: "2.0"
+nlu:
+- regex: number_guests
+  examples: |
+    - \d{1,2}
+- regex: room_number
+  examples: |
+    - \d{1,2}
+- regex: cancel_reservation_number
+  examples: |
+    - \d{5,9}
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - of course
+    - that sounds good
+    - correct
+    - affirmative
+    - ok
+    - okay
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no
+    - never
+    - i don't think so
+    - don't like that
+    - no way
+    - not really
+    - one more thing
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - you are a bot, aren´t you?
+    - am i talking to a bot?
+    - you are a bot
+- intent: human_challenge
+  examples: |
+    - can i chat with a human?
+    - can i chat with a hotel employee?
+    - can i talk with an employee?
+    - is it possible to chat with a human?
+    - my i chat with a human?
+    - may i ask to talk with an hotel assistant?
+    - is it possible to chat with a person?
+    - my i talk to a person?
+    - need to talk to a staff
+- intent: request_room_details
+  examples: |
+    - what is the price for a room?
+    - what do you charge for a room?
+    - how much is a day?
+    - how much is a night?
+    - how much for one day?
+    - how much for one night?
+    - how much for one person?
+    - what about the costs?
+    - how much is a room?
+    - what about the prices?
+    - what type of rooms do you offer?
+    - how are your rooms equipped?
+    - which rooms do you have?
+    - which rooms do you offer?
+    - tell me something about your room details(room_details)?
+    - tell me something about your room?
+- intent: inform_names
+  examples: |
+    - my name is [Wolfgang](first_name) [Mitterbaur)(last_name)
+    - my name is [Sandra](first_name) [Meier)(last_name)
+    - my name is [Simon](first_name) [Huber)(last_name)
+    - my name is [Alfred](first_name) [Zauner)(last_name)
+    - my name is [Johann](first_name) [Leitner)(last_name)
+    - [Thomas](first_name) [Neubauer](last_name) is my name
+    - [Philipp](first_name) [Huber](last_name) is my name
+    - [Oliver](first_name) [Eder](last_name) is my name
+    - [Olivia](first_name) [Weber](last_name) is my name
+    - [Andrea](first_name) [Fischer](last_name) is my name
+    - i am [Andreas](first_name) [Auer](last_name)
+    - i am [Sarah](first_name) [Brunner](last_name)
+    - i am [Hanna](first_name) [Haas](last_name)
+    - i am [Paul](first_name) [Schuster](last_name)
+    - i am [Anton](first_name) [Haider](last_name)
+    - call me [Lea](first_name) [Graf](last_name)
+    - call me [David](first_name) [Müller](last_name)
+    - call me [Maria](first_name) [Moser](last_name)
+    - call me [Amelie](first_name) [Gruber](last_name) 
+    - my first name is [Wolfgang](first_name) and my last name is [Zauner)(last_name)
+    - my first name is [Oliver](first_name) and my last name is [Gruber)(last_name)
+    - my first name is [Andreas](first_name) and my last name is [Baum)(last_name)
+    - my first name is [Andreas](first_name) and my last name is [Hammer)(last_name)
+    - my first name is [Sandra](first_name) and my last name is [Sonne)(last_name)
+    - i'm [Simone](first_name) [Huber](last_name)
+    - i'm [Norbert](first_name) [Landerl](last_name)
+    - i'm [Franz](first_name) [Sonnmeier](last_name)
+    - i'm [Christine](first_name) [Sonnenfeld](last_name)
+    - i'm [Alexandra](first_name) [Meier](last_name)   
+    - my first name is [Olivia](first_name) and my last name is [Jung)(last_name)    
+    - my first name is [Sophia](first_name) and my last name is [Lang)(last_name)    
+    - my first name is [Nils](first_name) and my last name is [Fischer)(last_name)    
+    - my first name is [Emma](first_name) and my last name is [Vogel)(last_name)    
+    - my first name is [Marie](first_name) and my last name is [Engel)(last_name)        
+- intent: inform_phone
+  examples: |
+    - my phone is [0664/5831662](phone) 
+    - [+43664/748941](phone) is my phone number
+    - my number is [+43724278964](phone)
+    - [+43664/1285746](phone) is my number
+    - the number is [06691478549](phone)
+    - it is [+496691478549](phone)
+    - [0669/1478549](phone) is my phone number
+    - [+436691348549](phone) is mine
+    - [+496691474349](phone) is my phone no
+    - mine is [00496691474549](phone)
+    - my phone is [004985974521](phone)
+    - the no is [+67698214577](phone)
+    - phone no is [+676784174](phone)
+    - my mobile is [072287465](phone)
+    - my telefon number is [0724298741](phone)
+    - my telefon is [+43724298741](phone)
+    - no is [+436649877441](phone)
+- intent: inform_email_address
+  examples: |
+    - my email is [wolfgang@mitterbaur.at](email_address) 
+    - [sandra@baum.at](email_address) is my email
+    - [christoph@huber.at](email_address)
+    - mail is [simone@graf.at](email_address)
+    - my mail [lukas@gruber.at](email_address)
+    - the mail is [albert@sonne.com](email_address)
+    - mine is [susanne@leitner.de](email_address)
+    - it is [lea.hammer@gmail.com](email_address)
+    - mail is [otto.oberhammer@gmail.com](email_address)
+    - my email address is [sarah.senner@gmail.com](email_address)
+    - my address is [susi.renner@gmail.com](email_address)
+    - mail is [gerhard.uller@aon.com](email_address)
+- intent: request_ask_reservation
+  examples: |
+    - i want to book a [room](location) for my stay
+    - i need a [room](location) for my stay
+    - i want to book a [room](location)
+    - i request a [room](location)
+    - i would like to book a [room](location)
+    - need a [room](location)
+    - need some [rooms](location)
+    - i require a [room](location)
+    - can you book a [room](location)?
+    - book [room](location)
+    - want to book a [room](location)
+    - need to book a [room](location)
+    - book [rooms](location)
+    - book some [rooms](location)
+    - i want to book [room](location)
+    - need to book [rooms](location)
+    - book a [room](location)
+    - book [rooms](location)
+    - book two [rooms](location)
+- intent: inform_dates
+  examples: |
+    - i arrive at [01.01.2022]{"entity": "date", "role": "start"} and leave at [31.12.2022]{"entity": "date", "role": "end"} 
+    - i check-in at [05.07.2022]{"entity": "date", "role": "start"} until [18.04.2022]{"entity": "date", "role": "end"}
+    - i need the room from [05.07.2022]{"entity": "date", "role": "start"} to [18.04.2022]{"entity": "date", "role": "end"}
+    - from [11.07.2022]{"entity": "date", "role": "start"} to [18.04.2022]{"entity": "date", "role": "end"}
+    - from [1.1.2022]{"entity": "date", "role": "start"} to [31.12.2022]{"entity": "date", "role": "end"}
+    - from [3.4.2022]{"entity": "date", "role": "start"} to [2.04.2022]{"entity": "date", "role": "end"}
+    - from [08.10.2022]{"entity": "date", "role": "start"} to [09.10.2022]{"entity": "date", "role": "end"}
+    - i stay from [31.12.2022]{"entity": "date", "role": "start"} to [18.04.2022]{"entity": "date", "role": "end"} 
+    - from [31.12.2022]{"entity": "date", "role": "start"} to [18.04.2022]{"entity": "date", "role": "end"}
+    - book the room from [01.01.2023]{"entity": "date", "role": "start"} and leave at [03.01.2023]{"entity": "date", "role": "end"} 
+    - i want a room from [4.8.2022]{"entity": "date", "role": "start"} to [5.8.2022]{"entity": "date", "role": "end"}
+    - [8.11.2022]{"entity": "date", "role": "start"} to [10.11.2022]{"entity": "date", "role": "end"}
+    - [11.11.2022]{"entity": "date", "role": "start"} until [12.11.2022]{"entity": "date", "role": "end"} 
+- intent: inform_checkin_date
+  examples: |
+    - from [12.11.2022](checkin_date)
+    - [11.09.2022](checkin_date) is my check-in date
+    - my check-in date is [12.11.2020](checkin_date)
+    - i check-in at [02.12.2022](checkin_date)
+    - i need the room from [12.11.2022](checkin_date)
+    - the [11.11.2022](checkin_date) is my check-in date
+    - check-in at [11.04.2023](checkin_date)
+    - arrive at [14.12.2023](checkin_date)
+    - check in at [22.12.2023](checkin_date)
+    - i arrive at [01.01.2022](checkin_date)
+    - check-in [11.3.2022](checkin_date)
+    - need the froom from [13.8.2022](checkin_date)
+    - i stay from [30.2.2023](checkin_date)
+- intent: inform_checkout_date    
+  examples: |
+    - to [12.11.2022](checkout_date)
+    - [12.11.2023](checkout_date) is my check-out date
+    - my check-out date is [12.11.2020](checkout_date)
+    - i check-out at [22.02.2023](checkout_date)
+    - until [15.02.2023](checkout_date)
+    - check-out at [17.11.2023](checkout_date)
+    - i leave at [12.12.2022](checkout_date)
+    - to [15.02.2023](checkout_date)
+    - leave at [11.4.2023](checkout_date)
+    - i stay until [18.9.2023](checkout_date)
+    - stay until [31.12.2023](checkout_date)
+    - book the room until [21.11.2023](checkout_date)
+- intent: inform_guests_number
+  examples: |
+    - only [1](number_guests) guest
+    - we are [2](number_guests) guests 
+    - [3](number_guests) guests 
+    - [1](number_guests) guest
+    - [2](number_guests) guests
+    - [3](number_guests) guests
+    - we are [2](number_guests)
+    - only [1](number_guests)
+    - [1](number_guests)
+    - [2](number_guests)
+    - we are [3](number_guests)
+    - [3](number_guests)
+    - we are [3](number_guests) guests
+    - we are [3](number_guests) persons
+    - we are [2](number_guests) persons
+- intent: inform_room_number
+  examples: |
+    - i need [1](number_rooms) room
+    - i request need [2](number_rooms) rooms
+    - i require [1](number_rooms) room
+    - i need only [1](number_rooms)
+    - book [2](number_rooms) rooms
+    - book [1](number_rooms) room
+    - [1](number_rooms) room
+    - [2](number_rooms) rooms
+    - i need [2](number_rooms) rooms
+    - only [1](number_rooms)
+    - [1](number_rooms)
+    - [2](number_rooms)
+- intent: inform_room_types
+  examples: |
+    - i want to have a [one](room_type) bed room
+    - i require a [one](room_type) bed room
+    - i want to have a [two](room_type) bed room
+    - i require a [two](room_type) bed room
+    - i want to have a [double](room_type) bed room
+    - i require a [double](room_type) bed room
+    - a [one](room_type) bed room
+    - a [two](room_type) bed room
+    - a [double](room_type) bed room
+    - a [one](room_type)
+    - a [two](room_type)
+    - a [double](room_type)
+- intent: request_cancel_reservation
+  examples: |
+    - i want to cancel a reservation
+    - cancel a reservation
+    - cancel my reservation
+    - cancel the reservation
+    - cancel the hotel reservation
+    - cancel the hotel room reservation
+    - i need to cancel my reservation
+    - need to cancel my reservation
+    - i have to cancel my reservation
+    - i have to cancel my reservation
+    - please cancel my reservation
+    - please cancel a reservation
+    - please cancel the reservation
+    - delete the reservation
+    - delete my reservation
+- intent: inform_cancel_reservation
+  examples: |
+    - delete the reservation [150150](cancel_reservation_number)
+    - i want to cancel the [123456](cancel_reservation_number)
+    - delete my reservation with number [784719](cancel_reservation_number)
+    - the reservation number is [123456](cancel_reservation_number)
+    - it is [123456](cancel_reservation_number)
+    - cancel [365784](cancel_reservation_number)
+    - delete [987425](cancel_reservation_number)
+    - [548762](cancel_reservation_number)
+    - the number is [898742](cancel_reservation_number)
+    - delete the reservation [745896](cancel_reservation_number)
+    - delete the reservation with number [985314](cancel_reservation_number)
+    - cancel the reservation [541257](cancel_reservation_number)
+    - cancel my reservation [987415](cancel_reservation_number)
+- intent: request_ask_restaurant_table
+  examples: |
+    - i want to book a table
+    - i need a restaurant table
+    - i want to book a table
+    - i want to book a restaurant table
+    - can i book a restaurant table?
+    - can i have a restaurant table?
+    - please book a restaurant table for me
+    - please reserve a restaurant table for me
+    - may i book a restaurant table?
+    - may i reserve a restaurant table?
+    - is it possible to book a table at the restaurant?
+    - may i reserve a table at the restaurant?
+    - please book a table at the restaurant
+    - please order a table at the restaurant    
+- intent: inform_restaurant_table_time
+  examples: |
+    - i need the table at [18:00](restaurant_table_time)
+    - at [19:00](restaurant_table_time)
+    - book the restaurant table at [20:00](restaurant_table_time)
+    - at [17:00](restaurant_table_time)
+    - reserve at [18:00](restaurant_table_time)
+    - book the table for [19:30:00](restaurant_table_time)
+    - reserve the table for [19:30](restaurant_table_time)
+    - i want to have a table at [20:30](restaurant_table_time)
+    - i need the table at [21:30](restaurant_table_time)
+    - need the table at [21:30](restaurant_table_time)
+    - i want a table at [21:45](restaurant_table_time)
+    - the time is [20:45](restaurant_table_time)
+- intent: request_checkin_time
+  examples: |
+    - what [time](checkinouttime) i can check-in at the room?
+    - when(checkinouttime) can i check-in for the room?
+    - what are the check-in and check-out [times](checkinouttime) for the room?
+    - what [time](checkinouttime) can i check-in?
+    - what [time](checkinouttime) can i check-out?
+    - can i check-in later(checkinouttime)?
+    - what are the [times](checkinouttime) for checki-in and check-out?
+    - what are the [check-in times](checkinouttime)?    
+    - what are the [check-out times](checkinouttime)?
+    - what [time](checkinouttime) can i check-in?
+    - what [time](checkinouttime) can i check-out?
+    - what are the check-in and [check-out times](checkinouttime)?
+    - what [time](checkinouttime) can i check-in to the room?
+    - what is the [time](checkinouttime) i have to leave the room?
+    - when(checkinouttime) do i have to leave the room?
+    - what are the [check-in times](checkinouttime)?
+    - what are the [check-out times](checkinouttime)? 
+- intent: request_breakfast
+  examples: |
+    - i want a [breakfast](meal)
+    - does the hotel offer [breakfast](meal)?
+    - is there [breakfast](meal) offered by the hotel?
+    - is [breakfast](meal) available?
+    - is [breakfast](meal) there?
+    - is a [breakfast](meal) included?
+    - can i get [breakfast](meal) here?
+    - do you provide [breakfast(]meal)?
+    - [breakfast](meal)?
+    - do you serve [breakfast](meal)?
+    - is [breakfast](meal) available?
+    - can i have a [breakfast](meal)?
+    - is a [breakfast](meal) included?
+    - i want a [breakfast](meal)
+- intent: request_park_place
+  examples: |
+    - i want a [park place](garage) for my car
+    - does the hotel offer [park place](garage) for cars?
+    - is there [park place](garage) offered by the hotel?
+    - is [park place](garage) available?
+    - is [park place](garage) for cars there?
+    - is a [park place](garage) included?
+    - can i get a [park place](garage) there?
+    - can i [park](garage) my car at the hotel?
+    - where can i [park](garage) the car?
+    - do you provide [park place](garage)?
+    - do you serve [park place](garage) for cars?
+    - is [park place](garage) available?
+    - can i [park](garage) my car at the hotel?
+    - can i charge my electric car at the hotel?
+    - do you offer chargers for electric cars?
+- intent: request_bill
+  examples: |
+    - i want to pay with [credit card](bill)
+    - i want to pay with [cash](bill)
+    - can i pay with [credit card](bill)?
+    - can i pay with [cash](bill)?
+    - which [payments](bill) do you offer?
+    - how can i [pay](bill) the hotel room?
+    - how can i [pay](bill) the hotel?
+    - how can i [pay](bill)?
+    - which credit [cards](bill) do you accept?
+    - can i pay with [visa](bill)?
+    - can i pay with [master card](bill)?
+    - do you accept [credit cards](bill)?
+    - which [credit cards](bill) do you accpect?
+    - do you accept [visa card](bill)?
+    - do you accept [master card](bill)?
+    - can i pay with [visa card](bill)?
+    - can i pay with [master card](bill)?
+- intent: request_fitness_services
+  examples: |
+    - does the hotel offer a [pool](fitness_service)?
+    - is a [fitness area](fitness_service) available?
+    - is a [pool](fitness_service) available?
+    - is a [gym](fitness_service) available?
+    - does the hotel offer a [gym](fitness_service)?
+    - does the hotel offer a [pool](fitness_service)?
+    - is a [fitness center](fitness_service) there?
+    - which [fitness services](fitness_service) do you offer?
+    - which [fitness services](fitness_service) offers the hotel?
+    - is a [gym](fitness_service) available?
+    - is a [indoor pool](fitness_service) available?
+    - is a [outdoor pool](fitness_service) available?
+    - does the hotel offer a [pool](fitness_service)?
+    - does the hotel offer a [gym](fitness_service)?
+    - does the hotel offer a [fitness area](fitness_service)?
+    - does the hotel offer [fitness services](fitness_service)?
+    - does the hotel offer a [wellness area](fitness_service)?
+- intent: request_client_message
+  examples: |
+    - can i leave a message?
+    - i want to leave a message?
+    - can i give a some additional notes?
+    - i want to leave a message
+    - can i leave some notes to the manager?
+    - i want to give some notes
+    - i want to leave notes
+    - i want to leave notes for the staff
+    - i want to leave notes for the manager
+    - can i leave a message for the manager?
+    - i leave a note for the staff
+    - i give you a message for the staff
+    - i have a note for the manager
+    - i have a message for the staff  
+    - may i leave a message for the manager
+    - may i leave a note for the manager
+    - may i leave a message for the staff
+    - may i leave a note for the staff
+- intent: enter_client_message
+  examples: |
+    - can i check-in later? let me know(client_message)
+    - please book a rental car for me(client_message)
+    - i need a room with air condition(client_message)
+    - i do not want a room at the road side(client_message)
+    - i want a room at the courtyard side(client_message)
+    - please call me back(client_message)
+    - can i have a discount(client_message)
+    - i want a 20% discount(client_message)   
+    

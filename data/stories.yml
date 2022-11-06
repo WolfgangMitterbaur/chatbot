@@ -1,0 +1,179 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot
+  
+- story: human challenge
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: human_challenge
+  - action: utter_talk_to_human
+
+- story: identify user and no story no end
+  steps:
+  - intent: inform_names
+  - action: name_form
+  - action: utter_slots_name_values
+  - action: action_generate_reservation_number
+  - action: utter_slots_reservation_number
+  - action: action_store_client_room
+  - action: utter_is_that_all
+  - intent: affirm
+  - action: utter_deny_message
+    
+- story: identify user and story end
+  steps:
+  - intent: inform_names
+  - action: name_form
+  - action: utter_slots_name_values
+  - action: action_generate_reservation_number
+  - action: utter_slots_reservation_number
+  - action: action_store_client_room
+  - action: utter_is_that_all
+  - intent: deny
+  - action: utter_goodbye
+    
+- story: request a reservation
+  steps:
+  - intent: request_cancel_reservation
+  - action: utter_cancel_reservation
+  - intent: inform_cancel_reservation
+  - action: client_cancel_reservation_number_form
+  - action: action_cancel_reservation
+  - action: utter_is_that_all
+
+- story: ask for a room
+  steps:
+  - intent: request_ask_reservation
+  - action: action_check_all_avail_rooms
+  - action: utter_ask_reservation
+   
+- story: book a room 1 positive
+  steps:
+  - intent: inform_dates
+  - action: room_form
+  - action: utter_slots_room_values
+  - action: action_check_room_avail
+  - intent: affirm
+  - action: utter_identify_client
+  
+- story: book a room 2 positive
+  steps:
+  - intent: inform_checkin_date
+  - action: room_form
+  - action: utter_slots_room_values
+  - action: action_check_room_avail
+  - intent: affirm
+  - action: utter_identify_client
+
+- story: book a room 1 negative
+  steps:
+  - intent: inform_dates
+  
+  - action: room_form
+  - action: utter_slots_room_values
+  - action: action_check_room_avail
+  - intent: deny
+  - action: utter_deny_message
+  
+- story: book a room 2 negative
+  steps:
+  - intent: inform_checkin_date
+  - action: room_form
+  - action: utter_slots_room_values
+  - action: action_check_room_avail
+  - intent: deny
+  - action: utter_deny_message
+
+- story: ask for check-in and check-out times
+  steps:
+  - intent: request_checkin_time
+  - action: utter_ask_checkinouttimes
+  - action: utter_is_that_all 
+
+- story: ask for breakfast
+  steps:
+  - intent: request_breakfast
+  - action: utter_breakfast_avail
+  - action: utter_is_that_all
+
+- story: ask for parking place
+  steps:
+  - intent: request_park_place
+  - action: utter_park_place_avail
+  - action: utter_is_that_all
+  
+- story: ask for payment conditions
+  steps:
+  - intent: request_bill
+  - action: utter_payments_avail
+  - action: utter_is_that_all   
+
+- story: ask for fitness center
+  steps:
+  - intent: request_fitness_services
+  - action: utter_fitness_services_avail
+  - action: utter_is_that_all  
+
+- story: ask for a restaurant table
+  steps:
+  - intent: request_ask_restaurant_table
+  - action: utter_ask_restaurant_table
+  - intent: inform_restaurant_table_time
+  - action: table_form
+  - action: action_book_restaurant_table
+  
+- story: ask about breakfast
+  steps:
+  - intent: request_breakfast
+  - action: action_get_breakfast
+  - action: utter_is_that_all  
+
+- story: ask about room prices and equipment
+  steps:
+  - intent: request_room_details
+  - action: action_check_all_avail_rooms
+  - action: utter_ask_about_room_details
+  - action: utter_ask_help
+    
+- story: ask about park places
+  steps:
+  - intent: request_park_place
+  - action: action_get_carparking
+  - action: utter_is_that_all
+  
+- story: ask about payment
+  steps:
+  - intent: request_bill
+  - action: action_payments_avail 
+  - action: utter_is_that_all
+    
+- story: ask about fitness services
+  steps:
+  - intent: request_fitness_services
+  - action: action_fitness_services_avail   
+  - action: utter_is_that_all
+  
+- story: client message
+  steps:
+  - intent: request_client_message
+  - action: action_check_message_precondition
+  - action: utter_client_message
+  - action: client_message_form
+  - action: utter_slots_client_message_values
+  - action: action_store_message
+  - action: utter_is_that_all
